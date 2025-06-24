@@ -8,3 +8,5 @@ docker run -it --rm \
   -v "$PWD/build":/home/aseprite/build \
   aseprite-builder \
   bash -c 'cd /app/aseprite && ./build.sh --auto --norun && cp -a /app/aseprite/build/bin/. /home/aseprite/build/'
+
+docker rmi aseprite-builder
