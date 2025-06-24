@@ -1,14 +1,9 @@
 #!/bin/bash
 
-# docker build -t aseprite-builder .
+docker build -t aseprite-builder .
 
-docker run --rm -it \
-  -v "$PWD":/app \
-  -w /app \
+docker run -it \
+  -v "$PWD/build":/app/aseprite/build/bin \
   aseprite-builder \
   bash -c "\
-    rm -rf aseprite || true && \
-    git clone https://github.com/aseprite/aseprite.git && \
-    cd aseprite && \
-    git submodule update --init --recursive && \
-    ./build.sh --auto --norun"
+    cd /app/aseprite && ./build.sh --auto --norun"
